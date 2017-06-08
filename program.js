@@ -1,11 +1,11 @@
-
 var os = require('os');
 
 process.stdin.setEncoding('utf-8');
 process.stdin.on('readable', function() {
     var input = process.stdin.read(); 
     if(input !== null) {
-        var instruction = input.trim(); 
+        var [ instruction, value ] = input.split(' '); 
+        // var instruction = input.trim(); 
  
         switch(instruction) {
             case '/exit':
@@ -19,18 +19,16 @@ process.stdin.on('readable', function() {
                 console.log(process.env.TEMP);
                 break;
             case '/getOSinfo':
-    			var OSinfo = require('./OSInfo');
+                var OSinfo = require('./OSInfo');
                 OSinfo.print();
-				break;
+                break;
             case '/test':
                 var OSTime= require('./modules/OSTime');
-                OSTime.print();
+                const result = OSTime.print(Number(value)); // wynik funkcji
+                console.log(result); // wyswietl wynik
                 break;
             default:
                 process.stderr.write('Wrong instruction!\n');
         };
     }
 });
-
-
-

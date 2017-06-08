@@ -3,8 +3,7 @@ var os = require('os');
 process.stdin.setEncoding('utf-8');
 
 
-function test() {
-process.stdin.on('readable', function() {
+/*process.stdin.on('readable', function() {
     var input = process.stdin.read(); 
 
 
@@ -14,7 +13,7 @@ process.stdin.on('readable', function() {
         console.log(seconds);
         console.log(convertOStime(seconds));
     }
-});
+});*/
 
 function convertOSTime(seconds) {
             var hours;
@@ -30,11 +29,11 @@ function convertOSTime(seconds) {
               hours= Math.floor(seconds/3600);
               minutes = Math.floor(seconds/60)%60;
               seconds = seconds%60;
-            return [hours + " hours", minutes + " minutes", seconds + " seconds"];
+            return hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
         }
         //console.log(convertOStime(125));
 }
-}
-//exports.print = convertOSTime;
+//}
+exports.print = convertOSTime;
 //exports.getCPUDetails = getCPUDetails;
-exports.print = test;
+//exports.print = test;
