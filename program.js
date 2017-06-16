@@ -4,10 +4,10 @@ process.stdin.setEncoding('utf-8');
 process.stdin.on('readable', function() {
     var input = process.stdin.read(); 
     if(input !== null) {
-        var [ instruction, value ] = input.split(' '); 
+        var [ instruction, value ] = input.trim().split(' '); 
         // var instruction = input.trim(); 
  
-        switch(instruction) {
+        switch(instruction.trim()) {
             case '/exit':
                 process.stdout.write('Quitting app!\n');
                 process.exit();
